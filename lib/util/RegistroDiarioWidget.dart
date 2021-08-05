@@ -114,7 +114,7 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                 Column(
                   children: [
                     IconButton(
-                        color: iconeRaiva ? Colors.purple : Colors.grey,
+                        color: iconeRaiva ? Colors.red : Colors.grey,
                         iconSize: 50,
                         icon: Icon(Icons.sentiment_very_dissatisfied_outlined),
                         onPressed: () {
@@ -129,14 +129,14 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                         }),
                     Text("Raiva",
                         style: TextStyle(
-                            color: iconeRaiva ? Colors.purple : Colors.grey,
+                            color: iconeRaiva ? Colors.red : Colors.grey,
                             fontWeight: FontWeight.bold))
                   ],
                 ),
                 Column(
                   children: [
                     IconButton(
-                        color: iconeTriste ? Colors.red : Colors.grey,
+                        color: iconeTriste ? Colors.purple : Colors.grey,
                         iconSize: 50,
                         icon: Icon(Icons.sentiment_dissatisfied_outlined),
                         onPressed: () {
@@ -151,7 +151,7 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                         }),
                     Text("Triste",
                         style: TextStyle(
-                            color: iconeTriste ? Colors.red : Colors.grey,
+                            color: iconeTriste ? Colors.purple : Colors.grey,
                             fontWeight: FontWeight.bold))
                   ],
                 ),
@@ -198,7 +198,7 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                                 erro: (mensagem) {
                                   Navigator.pop(context);
                                   UtilDialog.exibirInformacao(context,
-                                      titulo: "Ops!", mensagem: mensagem);
+                                      emocao: "Ops!", mensagem: mensagem);
                                 },
                                 carregando: () {
                                   UtilDialog.showLoading(context);

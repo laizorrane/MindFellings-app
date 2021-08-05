@@ -10,7 +10,7 @@ class UtilDialog {
   static ControladorRegistro _controladorRegistro = GetIt.I.get<ControladorRegistro>();
 
   static void exibirInformacao(BuildContext context,
-      {String titulo, String mensagem}) {
+      {String emocao, String mensagem}) {
     showDialog(
       context: context,
       builder: (context) {
@@ -23,7 +23,7 @@ class UtilDialog {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    "$titulo",
+                    "$emocao",
                     style: TextStyle(fontSize: 16),
                   ),
                   Divider(),
@@ -77,10 +77,10 @@ class UtilDialog {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Atenção, deseja excluir?"),
+                  Text("Atenção, deseja excluir este sentimento?"),
                   Divider(),
                   Text(
-                    "${registro.criador.nome}",
+                    "${registro.emocao}",
                     style: TextStyle(fontSize: 16),
                   ),
                   Divider(),
@@ -105,13 +105,13 @@ class UtilDialog {
                                 sucesso: () {
                                   Navigator.pop(mainContext);
                                   exibirInformacao(mainContext,
-                                      titulo: "Sucesso!",
-                                      mensagem: "A publicação foi excluida");
+                                      emocao: "Sucesso!",
+                                      mensagem: "O registro foi excluido");
                                 },
                                 erro: (mensagem) {
                                   Navigator.pop(mainContext);
                                   exibirInformacao(mainContext,
-                                      titulo: "Ops!", mensagem: mensagem);
+                                      emocao: "Ops!", mensagem: mensagem);
                                 },
                               );
                             },
@@ -144,7 +144,7 @@ class UtilDialog {
       builder: (context) {
         return Center(
           child: Card(
-            margin: EdgeInsets.all(24),
+            margin: EdgeInsets.all(8),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(

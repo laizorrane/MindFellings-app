@@ -58,7 +58,7 @@ class _TelaLoginState extends State<TelaLogin> {
                               context, "/telaPrincipal");
                         }, erro: (mensagem) {
                           UtilDialog.exibirInformacao(context,
-                              titulo: "Ops!", mensagem: mensagem);
+                              emocao: "Ops!", mensagem: mensagem);
                         });
                       },
                     ),

@@ -55,7 +55,7 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
                         _controladorUsuario.editarUsuario(
                             _controladorUsuario.mUsuarioLogado, sucesso: () {
                           UtilDialog.exibirInformacao(context,
-                              titulo: "Dados alterados com sucesso!");
+                              emocao: "Dados alterados com sucesso!");
                           Navigator.pushReplacementNamed(
                               context, "/telaPrincipal");
                         });

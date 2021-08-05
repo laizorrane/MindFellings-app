@@ -83,9 +83,21 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                           erro: (mensagem) {
 
                             UtilDialog.exibirInformacao(context,
-                                titulo: "Ops!", mensagem: mensagem);
+                                emocao: "Ops!", mensagem: mensagem);
                           },
                         );
+                      },
+                    ),
+                     Row(children: [
+                      Expanded(child: Divider()),
+                      Text("Ou"),
+                      Expanded(child: Divider())
+                    ]),
+                    BotaoPadrao(
+                      value: "Fazer Login",
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                            context, "/telaLogin");
                       },
                     ),
                   ],

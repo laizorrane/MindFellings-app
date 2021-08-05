@@ -33,3 +33,4 @@ class UtilRetornoRegistro {
       _$UtilRetornoRegistroFromJson(json);
   Map<String, dynamic> toJson() => _$UtilRetornoRegistroToJson(this);
 }
+

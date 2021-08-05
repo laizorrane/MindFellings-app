@@ -23,11 +23,34 @@ class _TelaRegistrosState extends State<TelaRegistros> {
     super.initState();
   }
 
+  Icon getIcone(String emocao) {
+    switch (emocao) {
+      case "RADIANTE":
+        return Icon(Icons.sentiment_very_satisfied_outlined,
+            size: 34, color: Colors.green);
+      case "FELIZ":
+        return Icon(Icons.sentiment_satisfied_alt_outlined,
+            size: 34, color: Colors.blue);
+      case "INDIFERENTE":
+        return Icon(Icons.sentiment_neutral_outlined,
+            size: 34, color: Colors.yellow[900]);
+      case "RAIVA":
+        return Icon(Icons.sentiment_very_dissatisfied_outlined,
+            size: 34, color: Colors.red);
+      case "TRISTE":
+        return Icon(Icons.sentiment_dissatisfied_outlined,
+            size: 34, color: Colors.purple);
+      default:
+        return Icon(Icons.sentiment_neutral_outlined,
+            size: 34, color: Colors.grey);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text("Diário"),
+            title: Text("Meu Diário"),
             leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
@@ -47,7 +70,8 @@ class _TelaRegistrosState extends State<TelaRegistros> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("${reg.criador.nome}"),
+                      getIcone(reg.emocao),
+                      //Text("${reg.emocao}"),
                       Visibility(
                         visible: reg.isCriador,
                         child: Row(
