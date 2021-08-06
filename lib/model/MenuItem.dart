@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class MenuItem extends StatelessWidget {
   final IconData icon;
@@ -17,17 +19,18 @@ class MenuItem extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: <Widget>[
-            Icon(icon, color: Colors.white, size: 30),
+            FaIcon(icon, color: Colors.red, size: 30),
             SizedBox(width: 20),
             Text(title, style: TextStyle(
               fontWeight: FontWeight.w300,
-              fontSize: 20,
+              fontSize: 24,
               color: Colors.white
             ),)
 
           ],
         ),
       ),
+      
     );
   }
 }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:after_layout/after_layout.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mindfelling/controladores/ControladorRegistro.dart';
-//import 'package:mindfelling/util/RegistroDiarioWidget.dart';
+import 'package:mindfelling/util/StatusConsulta.dart';
 import 'package:mindfelling/util/UtilDataHora.dart';
 import 'package:mindfelling/util/UtilDialog.dart';
-//mport 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TelaRegistros extends StatefulWidget {
   TelaRegistros({Key key}) : super(key: key);
@@ -13,7 +16,10 @@ class TelaRegistros extends StatefulWidget {
   _TelaRegistrosState createState() => _TelaRegistrosState();
 }
 
-class _TelaRegistrosState extends State<TelaRegistros> {
+class _TelaRegistrosState extends State<TelaRegistros>
+    with AfterLayoutMixin<TelaRegistros> {
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
   ControladorRegistro _controladorRegistro = GetIt.I.get<ControladorRegistro>();
   BuildContext mMainContext;
 
@@ -23,93 +29,151 @@ class _TelaRegistrosState extends State<TelaRegistros> {
     super.initState();
   }
 
-  Icon getIcone(String emocao) {
+  FaIcon getIcone(String emocao) {
     switch (emocao) {
       case "RADIANTE":
-        return Icon(Icons.sentiment_very_satisfied_outlined,
+        return FaIcon(FontAwesomeIcons.laughBeam,
             size: 34, color: Colors.green);
       case "FELIZ":
-        return Icon(Icons.sentiment_satisfied_alt_outlined,
+        return FaIcon(FontAwesomeIcons.smile,
             size: 34, color: Colors.blue);
       case "INDIFERENTE":
-        return Icon(Icons.sentiment_neutral_outlined,
+        return FaIcon(FontAwesomeIcons.meh,
             size: 34, color: Colors.yellow[900]);
       case "RAIVA":
-        return Icon(Icons.sentiment_very_dissatisfied_outlined,
+        return FaIcon(FontAwesomeIcons.angry,
             size: 34, color: Colors.red);
       case "TRISTE":
-        return Icon(Icons.sentiment_dissatisfied_outlined,
+        return FaIcon(FontAwesomeIcons.sadCry,
             size: 34, color: Colors.purple);
       default:
-        return Icon(Icons.sentiment_neutral_outlined,
+        return FaIcon(FontAwesomeIcons.mehRollingEyes,
             size: 34, color: Colors.grey);
     }
+  }
+
+  _consultarRegistro() {
+    _controladorRegistro.consultarORegistro(sucesso: () {
+      Navigator.pop(context);
+      _refreshController.refreshCompleted();
+    }, erro: (mensagem) {
+      Navigator.pop(context);
+      _refreshController.refreshFailed();
+    }, carregando: () {
+      UtilDialog.showLoading(context);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text("Meu Diário"),
+           flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purple,
+                  Colors.red[300],
+                  Colors.yellow,
+                ],
+              ),
+            ),
+          ),
+            title: Text("Meu Diário", style: TextStyle(fontSize: 24),),
             leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
                 Navigator.pushReplacementNamed(context, "/telaPrincipal");
               },
             )),
-        body: ListView.builder(
-          primary: false,
-          itemBuilder: (context, index) {
-            var reg = _controladorRegistro.mRegistros[index];
-            return Card(
-                child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      getIcone(reg.emocao),
-                      //Text("${reg.emocao}"),
-                      Visibility(
-                        visible: reg.isCriador,
-                        child: Row(
-                          children: [
-                            IconButton(
-                                icon: Icon(Icons.edit),
-                                onPressed: () {
-                                  UtilDialog.editarReg(mMainContext, reg);
-                                }),
-                            IconButton(
-                                icon: Icon(Icons.delete),
-                                onPressed: () {
-                                  UtilDialog.excluirReg(mMainContext, reg);
-                                })
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  Divider(),
-                  Text("${reg.conteudo}"),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      children: [
-                        Container(),
-                        Text(UtilDataHora.convertDateTime(reg.dataDeRegistro))
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ));
-          },
-          itemCount: _controladorRegistro.mRegistros.length,
-          shrinkWrap: true,
-        ));
+        body: SmartRefresher(
+            controller: _refreshController,
+            header: WaterDropHeader(),
+            onRefresh: _consultarRegistro,
+            child: SingleChildScrollView(
+                padding: EdgeInsets.all(16),
+                child: Column(children: [
+                  Observer(builder: (_) {
+                    switch (_controladorRegistro.mStatusConsultaRegistros) {
+                      case StatusConsulta.CARREGANDO:
+                        return Text("CARREGANDO...");
+                        break;
+                      case StatusConsulta.SUCESSO:
+                        return ListView.builder(
+                          primary: false,
+                          itemBuilder: (context, index) {
+                            var reg = _controladorRegistro.mRegistros[index];
+                            return Card(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      getIcone(reg.emocao),
+                                      Visibility(
+                                        visible: reg.isCriador,
+                                        child: Row(
+                                          children: [
+                                            IconButton(
+                                                icon: FaIcon(FontAwesomeIcons.edit,
+                                                    color: Colors.indigo[900]),
+                                                onPressed: () {
+                                                  UtilDialog.editarReg(
+                                                      mMainContext, reg);
+                                                }),
+                                            IconButton(
+                                                icon: FaIcon(FontAwesomeIcons.trashAlt,
+                                                  color: Colors.indigo[900],
+                                                ),
+                                                onPressed: () {
+                                                  UtilDialog.excluirReg(
+                                                      mMainContext, reg);
+                                                })
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Text("${reg.conteudo}"),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      children: [
+                                        Container(),
+                                        Text(UtilDataHora.convertDateTime(
+                                            reg.dataDeRegistro))
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ));
+                          },
+                          itemCount: _controladorRegistro.mRegistros.length,
+                          shrinkWrap: true,
+                        );
+                        break;
+                      case StatusConsulta.FALHA:
+                        return Text("Ops! Não consegui carregar");
+                        break;
+                      default:
+                        return Container();
+                    }
+                  })
+                ]))));
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    _consultarRegistro();
   }
 }

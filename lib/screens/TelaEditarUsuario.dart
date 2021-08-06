@@ -18,7 +18,18 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Editar meu usuário"),
+         flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purple,
+                  Colors.red[300],
+                  Colors.yellow,
+                ],
+              ),
+            ),
+          ),
+        title: Text("Editar meu usuário", style: TextStyle(fontSize: 24),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -50,6 +61,7 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
                     ),
                     Container(),
                     BotaoPadrao(
+                      background: Colors.white,
                       value: "Salvar alterações",
                       onTap: () {
                         _controladorUsuario.editarUsuario(
@@ -62,7 +74,8 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
                       },
                     ),
                     BotaoPadrao(
-                        value: "Cancelar",
+                      background: Colors.white,
+                        value: "Cancelar", 
                         onTap: () {
                           Navigator.pushReplacementNamed(
                               context, "/telaPrincipal");

@@ -16,14 +16,24 @@ class TelaDeCadastro extends StatefulWidget {
 
 class _TelaDeCadastroState extends State<TelaDeCadastro> {
   ControladorUsuario _controladorUsuario = GetIt.I.get<ControladorUsuario>();
- 
 
   Usuario _usuario = Usuario();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Me cadastrar"),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.purple,
+                Colors.red[300],
+                Colors.yellow,
+              ],
+            ),
+          ),
+        ),
+        title: Text("Me cadastrar", style: TextStyle(fontSize: 24),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -62,7 +72,6 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                         _usuario.idade = text;
                       },
                     ),
-                   
                     TextFieldPadrao(
                       titulo: "Senha",
                       obscureText: true,
@@ -72,6 +81,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                     ),
                     Container(),
                     BotaoPadrao(
+                      background: Colors.white,
                       value: "Me registrar",
                       onTap: () {
                         _controladorUsuario.cadastrarUsuario(
@@ -81,23 +91,22 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                                 context, "/telaPrincipal");
                           },
                           erro: (mensagem) {
-
                             UtilDialog.exibirInformacao(context,
                                 emocao: "Ops!", mensagem: mensagem);
                           },
                         );
                       },
                     ),
-                     Row(children: [
+                    Row(children: [
                       Expanded(child: Divider()),
                       Text("Ou"),
                       Expanded(child: Divider())
                     ]),
                     BotaoPadrao(
+                      background: Colors.white,
                       value: "Fazer Login",
                       onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, "/telaLogin");
+                        Navigator.pushReplacementNamed(context, "/telaLogin");
                       },
                     ),
                   ],

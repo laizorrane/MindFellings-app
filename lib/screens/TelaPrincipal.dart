@@ -3,6 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:mindfelling/Controladores/ControladorUsuario.dart';
 import 'package:mindfelling/model/MenuItem.dart';
 import 'package:mindfelling/util/RegistroDiarioWidget.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class TelaPrincipal extends StatefulWidget {
   TelaPrincipal({Key key}) : super(key: key);
@@ -37,7 +39,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               ),
             ),
           ),
-          title: Text("Registro"),
+          title: Text("Registro", style: TextStyle(fontSize: 24),),
         ),
         drawer: new Drawer(
           child: Container(
@@ -74,7 +76,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 Container(
                   child: Column(children: <Widget>[
                     MenuItem(
-                      icon: Icons.calendar_today,
+                      icon: FontAwesomeIcons.calendarAlt,
                       title: "Meus Registros",
                       clique: () {
                         Navigator.pushReplacementNamed(
@@ -82,7 +84,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                       },
                     ),
                     MenuItem(
-                        icon: Icons.settings,
+                        icon: FontAwesomeIcons.userEdit,
                         title: "Editar usuário",
                         value: "Home",
                         clique: () {
@@ -90,7 +92,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                               context, "/telaEditarUsuario");
                         }),
                     MenuItem(
-                      icon: Icons.exit_to_app,
+                      icon: FontAwesomeIcons.signOutAlt,
                       title: "Sair",
                       value: "Sair",
                       clique: () {
@@ -109,10 +111,10 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           ),
         ),
         body: SingleChildScrollView(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(8), 
             child: Column(children: [
               Card(
-                  margin: EdgeInsets.all(8),
+                  margin: EdgeInsets.zero,
                   child: Padding(
                       padding: const EdgeInsets.all(24.0),
                       child: Center(

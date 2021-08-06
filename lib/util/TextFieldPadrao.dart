@@ -28,17 +28,19 @@ class TextFieldPadrao extends StatelessWidget {
             visible: titulo?.isNotEmpty ?? false,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 8),
-              child: Text("$titulo"),
+            
             )),
         Container(
           height: 45,
           child: TextField(
+            
             keyboardType: inputType,
             inputFormatters: inputFormatters,
             onChanged: onChanged,
             obscureText: obscureText,
             controller: TextEditingController(text: value ?? ""),
             decoration: InputDecoration(
+              labelText: "$titulo",
                 border: OutlineInputBorder(
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(5.0),

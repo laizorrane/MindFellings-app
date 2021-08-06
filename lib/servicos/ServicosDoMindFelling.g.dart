@@ -77,9 +77,10 @@ class _ServicosDoMindFelling implements ServicosDoMindFelling {
   }
 
   @override
-  Future<UtilRetornoRegistros> consultarRegistros() async {
+  Future<UtilRetornoRegistros> consultarRegistros(idUsuario) async {
+    ArgumentError.checkNotNull(idUsuario, 'idUsuario');
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'idUsuario': idUsuario};
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>(
         '/registroEmocionalLaiz/registroEmocoes',

@@ -15,10 +15,11 @@ class BotaoPadrao extends StatelessWidget {
         color: background,
         shape: OutlineInputBorder(
             borderRadius: const BorderRadius.all(
-          const Radius.circular(5.0),
+          const Radius.circular(18.0),
+          
         )),
         onPressed: onTap,
-        child: Text("$value"),
+        child: Text("$value" .toUpperCase(), style: TextStyle(fontSize: 12,),), textColor: Colors.black, 
       ),
     );
   }

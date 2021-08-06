@@ -7,7 +7,8 @@ import 'package:mindfelling/util/BotaoPadrao.dart';
 import 'package:mindfelling/util/RegistroDiarioWidget.dart';
 
 class UtilDialog {
-  static ControladorRegistro _controladorRegistro = GetIt.I.get<ControladorRegistro>();
+  static ControladorRegistro _controladorRegistro =
+      GetIt.I.get<ControladorRegistro>();
 
   static void exibirInformacao(BuildContext context,
       {String emocao, String mensagem}) {
@@ -144,7 +145,7 @@ class UtilDialog {
       builder: (context) {
         return Center(
           child: Card(
-            margin: EdgeInsets.all(8),
+            margin: MediaQuery.of(context).viewInsets,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(

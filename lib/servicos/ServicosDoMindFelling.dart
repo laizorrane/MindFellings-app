@@ -22,7 +22,7 @@ abstract class ServicosDoMindFelling {
       @Query("email") String email, @Query("senha") String senha);
 
   @GET("/registroEmocionalLaiz/registroEmocoes")
-  Future<UtilRetornoRegistros> consultarRegistros();
+  Future<UtilRetornoRegistros> consultarRegistros(@Query("idUsuario") String idUsuario);
 
   @DELETE("/registroEmocionalLaiz/registroEmocoes")
   Future<String> excluirRegistro(@Query("id") String idRegistro);

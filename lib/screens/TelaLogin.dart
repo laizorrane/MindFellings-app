@@ -20,7 +20,19 @@ class _TelaLoginState extends State<TelaLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Mind Fellings"),
+          
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purple,
+                  Colors.red[300],
+                  Colors.yellow,
+                ],
+              ),
+            ),
+          ),
+          title: Text("Mind Fellings", style: TextStyle(fontSize: 24),),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -51,6 +63,7 @@ class _TelaLoginState extends State<TelaLogin> {
                     ),
                     Container(),
                     BotaoPadrao(
+                      background: Colors.white,
                       value: "Entrar",
                       onTap: () {
                         _controladorUsuario.logarUsuario(_usuario, sucesso: () {
@@ -68,6 +81,7 @@ class _TelaLoginState extends State<TelaLogin> {
                       Expanded(child: Divider())
                     ]),
                     BotaoPadrao(
+                      background: Colors.white,
                       value: "Me Cadastrar",
                       onTap: () {
                         Navigator.pushReplacementNamed(

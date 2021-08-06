@@ -6,6 +6,7 @@ import 'package:mindfelling/model/Registro.dart';
 import 'package:mindfelling/util/BotaoPadrao.dart';
 import 'package:mindfelling/util/TextFieldPadraoExp.dart';
 import 'package:mindfelling/util/UtilDialog.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RegistroDiarioWidget extends StatefulWidget {
   final Registro registroEditar;
@@ -47,7 +48,7 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                     IconButton(
                         color: iconeRadiante ? Colors.green : Colors.grey,
                         iconSize: 50,
-                        icon: Icon(Icons.sentiment_very_satisfied_outlined),
+                        icon: FaIcon(FontAwesomeIcons.laughBeam),
                         onPressed: () {
                           setState(() {
                             iconeRadiante = true;
@@ -69,7 +70,7 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                     IconButton(
                         color: iconeFeliz ? Colors.blue : Colors.grey,
                         iconSize: 50,
-                        icon: Icon(Icons.sentiment_satisfied_alt_outlined),
+                        icon: FaIcon(FontAwesomeIcons.smile),
                         onPressed: () {
                           setState(() {
                             iconeRadiante = false;
@@ -92,7 +93,7 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                         color:
                             iconeIndiferente ? Colors.yellow[900] : Colors.grey,
                         iconSize: 50,
-                        icon: Icon(Icons.sentiment_neutral_outlined),
+                        icon: FaIcon(FontAwesomeIcons.mehRollingEyes),
                         onPressed: () {
                           setState(() {
                             iconeRadiante = false;
@@ -116,7 +117,7 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                     IconButton(
                         color: iconeRaiva ? Colors.red : Colors.grey,
                         iconSize: 50,
-                        icon: Icon(Icons.sentiment_very_dissatisfied_outlined),
+                        icon: FaIcon(FontAwesomeIcons.angry),
                         onPressed: () {
                           setState(() {
                             iconeRadiante = false;
@@ -138,7 +139,7 @@ class _RegistroDiarioWidgetState extends State<RegistroDiarioWidget> {
                     IconButton(
                         color: iconeTriste ? Colors.purple : Colors.grey,
                         iconSize: 50,
-                        icon: Icon(Icons.sentiment_dissatisfied_outlined),
+                        icon: FaIcon(FontAwesomeIcons.sadCry),
                         onPressed: () {
                           setState(() {
                             iconeRadiante = false;
