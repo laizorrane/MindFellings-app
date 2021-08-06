@@ -44,57 +44,60 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
                   Colors.yellow,
                 ],
               )),
-        child: Column(
-          children: [
-            Card(
-              margin: EdgeInsets.zero,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Wrap(
-                  spacing: 16,
-                  runSpacing: 16,
-                  children: [
-                    Text("Insira os novos dados"),
-                    Divider(),
-                    TextFieldPadrao(
-                      titulo: "Nome",
-                      onChanged: (text) {
-                        _controladorUsuario.mUsuarioLogado.nome = text;
-                      },
-                    ),
-                    TextFieldPadrao(
-                      titulo: "Nova Senha",
-                      obscureText: true,
-                      onChanged: (text) {
-                        _controladorUsuario.mUsuarioLogado.senha = text;
-                      },
-                    ),
-                    Container(),
-                    BotaoPadrao(
-                      background: Colors.white,
-                      value: "Salvar alterações",
-                      onTap: () {
-                        _controladorUsuario.editarUsuario(
-                            _controladorUsuario.mUsuarioLogado, sucesso: () {
-                          UtilDialog.exibirInformacao(context,
-                              emocao: "Dados alterados com sucesso!");
-                          Navigator.pushReplacementNamed(
-                              context, "/telaPrincipal");
-                        });
-                      },
-                    ),
-                    BotaoPadrao(
-                      background: Colors.white,
-                        value: "Cancelar", 
+        child: Padding(
+                  padding: const EdgeInsets.only(top: 96, left: 16, right: 16),
+          child: Column(
+            children: [
+              Card(
+                margin: EdgeInsets.zero,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Wrap(
+                    spacing: 16,
+                    runSpacing: 16,
+                    children: [
+                      Text("Insira os novos dados"),
+                      Divider(),
+                      TextFieldPadrao(
+                        titulo: "Nome",
+                        onChanged: (text) {
+                          _controladorUsuario.mUsuarioLogado.nome = text;
+                        },
+                      ),
+                      TextFieldPadrao(
+                        titulo: "Nova Senha",
+                        obscureText: true,
+                        onChanged: (text) {
+                          _controladorUsuario.mUsuarioLogado.senha = text;
+                        },
+                      ),
+                      Container(),
+                      BotaoPadrao(
+                        background: Colors.white,
+                        value: "Salvar alterações",
                         onTap: () {
-                          Navigator.pushReplacementNamed(
-                              context, "/telaPrincipal");
-                        })
-                  ],
+                          _controladorUsuario.editarUsuario(
+                              _controladorUsuario.mUsuarioLogado, sucesso: () {
+                            UtilDialog.exibirInformacao(context,
+                                emocao: "Dados alterados com sucesso!");
+                            Navigator.pushReplacementNamed(
+                                context, "/telaPrincipal");
+                          });
+                        },
+                      ),
+                      BotaoPadrao(
+                        background: Colors.white,
+                          value: "Cancelar", 
+                          onTap: () {
+                            Navigator.pushReplacementNamed(
+                                context, "/telaPrincipal");
+                          })
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ));
