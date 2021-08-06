@@ -6,6 +6,7 @@ import 'package:mindfelling/util/RegistroDiarioWidget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
+
 class TelaPrincipal extends StatefulWidget {
   TelaPrincipal({Key key}) : super(key: key);
 
@@ -27,6 +28,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
         appBar: AppBar(
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -111,21 +113,24 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           ),
         ),
         body: SingleChildScrollView(
-            padding: EdgeInsets.all(8), 
-            child: Column(children: [
-              Card(
-                  margin: EdgeInsets.zero,
-                  child: Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Center(
-                        child: Wrap(spacing: 32, runSpacing: 32, children: [
-                          Text(
-                            "Como você está?",
-                            style: TextStyle(fontSize: 32, color: Colors.black),
-                          )
-                        ]),
-                      ))),
-              RegistroDiarioWidget()
-            ])));
+            padding: EdgeInsets.zero, 
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purple,
+                  Colors.red[300],
+                  Colors.yellow,
+                ],
+              )),
+              child: Column(children: [
+               
+                Padding(
+                  padding: const EdgeInsets.only(top: 96, left: 16, right: 16),
+                  child: RegistroDiarioWidget(),
+                )
+              ]),
+            )));
   }
 }

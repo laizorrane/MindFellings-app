@@ -33,7 +33,17 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.zero, 
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purple,
+                  Colors.red[300],
+                  Colors.yellow,
+                ],
+              )),
         child: Column(
           children: [
             Card(
@@ -87,6 +97,6 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

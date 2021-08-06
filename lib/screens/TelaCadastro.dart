@@ -37,8 +37,17 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
-        child: Column(
+padding: EdgeInsets.all(0),
+          child: Container(
+              height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purple,
+                  Colors.red[300],
+                  Colors.yellow,
+                ],
+              )),        child: Column(
           children: [
             Card(
               margin: EdgeInsets.zero,
@@ -116,6 +125,6 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

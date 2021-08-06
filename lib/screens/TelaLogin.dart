@@ -36,7 +36,17 @@ class _TelaLoginState extends State<TelaLogin> {
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.all(0),
+          child: Container(
+              height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.purple,
+                  Colors.red[300],
+                  Colors.yellow,
+                ],
+              )),
           child: Column(children: [
             Card(
               margin: EdgeInsets.zero,
@@ -93,6 +103,6 @@ class _TelaLoginState extends State<TelaLogin> {
               ),
             ),
           ]),
-        ));
+        )));
   }
 }

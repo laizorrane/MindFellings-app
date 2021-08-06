@@ -19,7 +19,7 @@ class MenuItem extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: <Widget>[
-            FaIcon(icon, color: Colors.red, size: 30),
+            FaIcon(icon, color: Colors.white, size: 28),
             SizedBox(width: 20),
             Text(title, style: TextStyle(
               fontWeight: FontWeight.w300,
