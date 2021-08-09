@@ -8,17 +8,22 @@ part 'Registro.g.dart';
 @JsonSerializable()
 class Registro {
   String id, conteudo, emocao;
-  
-
 
   @JsonKey(fromJson: UtilDataHora.convertStringToDate)
   DateTime dataDeRegistro;
+  String novaDataDeRegistro;
   Usuario criador;
 
   bool get isCriador =>
       GetIt.I.get<ControladorUsuario>().mUsuarioLogado.id.contains(criador.id);
 
-  Registro({this.conteudo, this.criador, this.dataDeRegistro, this.id, this.emocao});
+  Registro(
+      {this.conteudo,
+      this.criador,
+      this.novaDataDeRegistro,
+      this.dataDeRegistro,
+      this.id,
+      this.emocao});
   factory Registro.fromJson(Map<String, dynamic> json) =>
       _$RegistroFromJson(json);
   Map<String, dynamic> toJson() => _$RegistroToJson(this);

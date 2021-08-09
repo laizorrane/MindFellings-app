@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class BotaoPadrao extends StatelessWidget {
   final String value;
   final Function() onTap;
-  final Color background; 
-  const BotaoPadrao({Key key, this.value, this.onTap, this.background}) : super(key: key);
+  final Color background;
+  const BotaoPadrao({Key key, this.value, this.onTap, this.background})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,14 +13,21 @@ class BotaoPadrao extends StatelessWidget {
       width: double.maxFinite,
       height: 50,
       child: RaisedButton(
-        color: background,
+        color: Colors.white,
         shape: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(
-          const Radius.circular(18.0),
+          borderRadius: BorderRadius.circular(18.0),
+          borderSide: BorderSide(color:  Colors.blue)
+            
           
-        )),
+        ),
         onPressed: onTap,
-        child: Text("$value" .toUpperCase(), style: TextStyle(fontSize: 12,),), textColor: Colors.black, 
+        child: Text(
+          "$value".toUpperCase(),
+          style: TextStyle(
+            fontSize: 12,
+          ),
+        ),
+        textColor: Colors.blue,
       ),
     );
   }

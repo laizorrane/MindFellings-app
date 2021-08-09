@@ -34,6 +34,7 @@ dependencies:
   get_it: ^5.0.6
   retrofit: any
   json_annotation: ^3.0.1
+  easy_localization: ^2.1.0+2
   json_serializable: ^3.3.0
   auto_size_text: ^2.1.0
   logger: any

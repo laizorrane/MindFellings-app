@@ -32,7 +32,9 @@ abstract class _ControladorRegistro with Store {
       Function(String mensagem) erro}) {
     carregando?.call();
     mStatusConsultaRegistros = StatusConsulta.CARREGANDO;
-    mService.consultarRegistros(GetIt.I.get<ControladorUsuario>().mUsuarioLogado.id).then((responseTodosRegistros) {
+    mService
+        .consultarRegistros(GetIt.I.get<ControladorUsuario>().mUsuarioLogado.id)
+        .then((responseTodosRegistros) {
       mRegistros.clear();
       mRegistros.addAll(responseTodosRegistros.sucesso);
       mStatusConsultaRegistros = StatusConsulta.SUCESSO;
@@ -50,9 +52,11 @@ abstract class _ControladorRegistro with Store {
     if (registro == null) {
       registro = Registro(
           conteudo: conteudoRegistro,
+      dataDeRegistro : DateTime.now(),
           emocao: emocaoRegistro,
           criador: GetIt.I.get<ControladorUsuario>().mUsuarioLogado);
     } else {
+      registro.dataDeRegistro = DateTime.now();
       registro.conteudo = conteudoRegistro;
       registro.emocao = emocaoRegistro;
     }

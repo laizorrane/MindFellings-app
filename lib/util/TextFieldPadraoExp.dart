@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 
-class TextFieldPadraoExp extends StatelessWidget {
+class TextFieldPadraoExp extends StatefulWidget {
   final Function(String text) onChanged;
   final String titulo, value;
   final bool obscureText;
+  final TextEditingController controller;
+
   const TextFieldPadraoExp(
       {Key key,
       this.onChanged,
       this.titulo,
+      this.controller,
       this.obscureText = false,
       this.value})
       : super(key: key);
 
+  @override
+  _TextFieldPadraoExpState createState() => _TextFieldPadraoExpState();
+}
+
+class _TextFieldPadraoExpState extends State<TextFieldPadraoExp> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,20 +27,21 @@ class TextFieldPadraoExp extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Visibility(
-            visible: titulo?.isNotEmpty ?? false,
+            visible: widget.titulo?.isNotEmpty ?? false,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 8),
-              child: Text("$titulo"),
+              child: Text("${widget.titulo}",
+                  style: TextStyle(fontSize: 16, color: Colors.blue)),
             )),
         Container(
-                    
-            child: TextField(
+          child: TextField(
             maxLength: 200,
             minLines: 1,
             maxLines: 4,
-            onChanged: onChanged,
-            obscureText: obscureText,
-            controller: TextEditingController(text: value ?? ""),
+            onChanged: widget.onChanged,
+            obscureText: widget.obscureText,
+            controller: widget.controller ??
+                TextEditingController(text: widget.value ?? ""),
             decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: const BorderRadius.all(
@@ -47,7 +56,4 @@ class TextFieldPadraoExp extends StatelessWidget {
       ],
     );
   }
-
-
-  
 }

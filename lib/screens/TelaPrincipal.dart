@@ -5,8 +5,6 @@ import 'package:mindfelling/model/MenuItem.dart';
 import 'package:mindfelling/util/RegistroDiarioWidget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
-
 class TelaPrincipal extends StatefulWidget {
   TelaPrincipal({Key key}) : super(key: key);
 
@@ -28,28 +26,32 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-        appBar: AppBar(
+        appBar:
+          AppBar(iconTheme: IconThemeData(color: Colors.white),
+
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.red[300],
-                  Colors.yellow,
+                  Colors.blue[300],
+                    Colors.green[200],
                 ],
               ),
             ),
           ),
-          title: Text("Registro", style: TextStyle(fontSize: 24),),
+          title: Text(
+            "Registro",
+            style: TextStyle(fontSize: 24, color: Colors.white),
+          ),
         ),
         drawer: new Drawer(
+        
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.red[400],
+                   Colors.blue[300],
+                    Colors.green[200],
                 ],
               ),
             ),
@@ -59,17 +61,17 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.purple,
-                        Colors.red[400],
+                        Colors.blue[300],
+                    Colors.green[200],
                       ],
                     ),
                   ),
                   accountName: new Text(
                       "${_controladorUsuario.mUsuarioLogado.nome}, ${_controladorUsuario.mUsuarioLogado.idade}",
-                      style: TextStyle(fontSize: 20)),
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
                   accountEmail: new Text(
                       "${_controladorUsuario.mUsuarioLogado.email}",
-                      style: TextStyle(fontSize: 16)),
+                      style: TextStyle(fontSize: 16, color: Colors.white)),
                   currentAccountPicture: new CircleAvatar(
                     backgroundImage:
                         new NetworkImage('http://i.pravatar.cc/300'),
@@ -113,19 +115,17 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           ),
         ),
         body: SingleChildScrollView(
-            padding: EdgeInsets.zero, 
+            padding: EdgeInsets.zero,
             child: Container(
               height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.red[300],
-                  Colors.yellow,
+                   Colors.blue[300],
+                    Colors.green[200],
                 ],
               )),
               child: Column(children: [
-               
                 Padding(
                   padding: const EdgeInsets.only(top: 96, left: 16, right: 16),
                   child: RegistroDiarioWidget(),

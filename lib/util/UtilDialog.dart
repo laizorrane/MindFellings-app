@@ -148,18 +148,20 @@ class UtilDialog {
             margin: MediaQuery.of(context).viewInsets,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Atenção, você está editando!"),
-                  Divider(),
-                  RegistroDiarioWidget(
-                      registroEditar: registro,
-                      sucesso: () {
-                        Navigator.pop(context);
-                      })
-                ],
+              child: SingleChildScrollView(
+                              child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Atenção, você está editando!"),
+                    Divider(),
+                    RegistroDiarioWidget(
+                        registroEditar: registro,
+                        sucesso: () {
+                          Navigator.pop(context);
+                        })
+                  ],
+                ),
               ),
             ),
           ),

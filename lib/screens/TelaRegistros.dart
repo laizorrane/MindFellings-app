@@ -69,153 +69,152 @@ class _TelaRegistrosState extends State<TelaRegistros>
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.purple,
-                    Colors.red[300],
-                    Colors.yellow,
+                    Colors.blue[300],
+                    Colors.green[200],
+                   
                   ],
                 ),
               ),
             ),
             title: Text(
               "Meu Diário",
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 24, color: Colors.white),
             ),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios),
+              icon: Icon(Icons.arrow_back_ios, color: Colors.white),
               onPressed: () {
                 Navigator.pushReplacementNamed(context, "/telaPrincipal");
               },
             )),
-        body: SmartRefresher(
+        body: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                         Colors.blue[300],
+                    Colors.green[200],
+                      ],
+                    ),
+                  ),
+                  child: 
+                     SmartRefresher(
             controller: _refreshController,
             header: WaterDropHeader(),
             onRefresh: _consultarRegistro,
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              primary: true,
+                physics: BouncingScrollPhysics(),
+                primary: true,
                 padding: EdgeInsets.all(0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.purple,
-                        Colors.red[300],
-                        Colors.yellow,
-                      ],
-                    ),
-                  ),
-                  child: Column(children: [
-                    Observer(builder: (_) {
-                      switch (_controladorRegistro.mStatusConsultaRegistros) {
-                        case StatusConsulta.CARREGANDO:
-                          return Text("CARREGANDO...");
-                          break;
-                        case StatusConsulta.SUCESSO:
-                          return SingleChildScrollView(
-                            child: Container(
-                                                              padding: const EdgeInsets.only( top: 16),
-
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.purple,
-                                    Colors.red[300],
-                                    Colors.yellow,
-                                  ],
+                    child: Column(children: [
+                      Observer(builder: (_) {
+                        switch (_controladorRegistro.mStatusConsultaRegistros) {
+                          case StatusConsulta.CARREGANDO:
+                            return Text("CARREGANDO...", style: TextStyle(fontSize: 16, color: Colors.white));
+                            break;
+                          case StatusConsulta.SUCESSO:
+                            return SingleChildScrollView(
+                              child: Container(
+                                padding: const EdgeInsets.only(top: 16),
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                     Colors.blue[300],
+                      Colors.green[200],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 16, right: 16),
-                                child: ListView.builder(
-                                  
-                                  primary: false,
-                                  itemBuilder: (context, index) {
-                                    var reg =
-                                        _controladorRegistro.mRegistros[index];
-                                    return Card(
-                                        child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              getIcone(reg.emocao),
-                                              Visibility(
-                                                visible: reg.isCriador,
-                                                child: Row(
-                                                  children: [
-                                                    IconButton(
-                                                        icon: FaIcon(
-                                                            FontAwesomeIcons
-                                                                .edit,
-                                                            color: Colors
-                                                                .indigo[900]),
-                                                        onPressed: () {
-                                                          UtilDialog.editarReg(
-                                                              mMainContext,
-                                                              reg);
-                                                        }),
-                                                    IconButton(
-                                                        icon: FaIcon(
-                                                          FontAwesomeIcons
-                                                              .trashAlt,
-                                                          color: Colors
-                                                              .indigo[900],
-                                                        ),
-                                                        onPressed: () {
-                                                          UtilDialog.excluirReg(
-                                                              mMainContext,
-                                                              reg);
-                                                        })
-                                                  ],
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          Divider(),
-                                          Text("${reg.conteudo}"),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Row(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 16, right: 16),
+                                  child: ListView.builder(
+                                    reverse: true,
+                                    primary: false,
+                                    itemBuilder: (context, index) {
+                                      var reg =
+                                          _controladorRegistro.mRegistros[index];
+                                      return Card(
+                                          child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.baseline,
+                                                  MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Container(),
-                                                Text(UtilDataHora
-                                                    .convertDateTime(
-                                                        reg.dataDeRegistro))
+                                                getIcone(reg.emocao),
+                                                Visibility(
+                                                  visible: reg.isCriador,
+                                                  child: Row(
+                                                    children: [
+                                                      IconButton(
+                                                          icon: FaIcon(
+                                                              FontAwesomeIcons
+                                                                  .edit,
+                                                              color: Colors
+                                                                  .indigo[900]),
+                                                          onPressed: () {
+                                                            UtilDialog.editarReg(
+                                                                mMainContext,
+                                                                reg);
+                                                          }),
+                                                      IconButton(
+                                                          icon: FaIcon(
+                                                            FontAwesomeIcons
+                                                                .trashAlt,
+                                                            color: Colors
+                                                                .indigo[900],
+                                                          ),
+                                                          onPressed: () {
+                                                            UtilDialog.excluirReg(
+                                                                mMainContext,
+                                                                reg);
+                                                          })
+                                                    ],
+                                                  ),
+                                                )
                                               ],
                                             ),
-                                          )
-                                        ],
-                                      ),
-                                    ));
-                                  },
-                                  itemCount:
-                                      _controladorRegistro.mRegistros.length,
-                                  shrinkWrap: true,
+                                            Divider(),
+                                            Text("${reg.conteudo}"),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.baseline,
+                                                children: [
+                                                  Container(),
+                                                  Text(UtilDataHora
+                                                      .convertDateTime(
+                                                          reg.dataDeRegistro))
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ));
+                                    },
+                                    itemCount:
+                                        _controladorRegistro.mRegistros.length,
+                                    shrinkWrap: true,
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                          break;
-                        case StatusConsulta.FALHA:
-                          return Text("Ops! Não consegui carregar");
-                          break;
-                        default:
-                          return Container();
-                      }
-                    })
-                  ]),
-                ))));
+                            );
+                            break;
+                          case StatusConsulta.FALHA:
+                            return Text("Ops! Não consegui carregar");
+                            break;
+                          default:
+                            return Container();
+                        }
+                      })
+                    ]),
+                  ),
+                )));
   }
 
   @override

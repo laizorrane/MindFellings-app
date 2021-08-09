@@ -8,11 +8,16 @@ class UtilDataHora {
       return null;
     }
   }
+
   static String convertDateTime(DateTime dateTime) {
     try {
-      return DateFormat("dd/MM/yyyy hh:mm", ).format(dateTime);
+      return DateFormat(
+        "dd/MM/yyyy hh:mm",
+      ).format(dateTime);
     } catch (e) {
       return "";
     }
   }
+
+  
 }

@@ -12,6 +12,7 @@ Registro _$RegistroFromJson(Map<String, dynamic> json) {
     criador: json['criador'] == null
         ? null
         : Usuario.fromJson(json['criador'] as Map<String, dynamic>),
+    novaDataDeRegistro: json['novaDataDeRegistro'] as String,
     dataDeRegistro:
         UtilDataHora.convertStringToDate(json['dataDeRegistro'] as String),
     id: json['id'] as String,
@@ -24,5 +25,6 @@ Map<String, dynamic> _$RegistroToJson(Registro instance) => <String, dynamic>{
       'conteudo': instance.conteudo,
       'emocao': instance.emocao,
       'dataDeRegistro': instance.dataDeRegistro?.toIso8601String(),
+      'novaDataDeRegistro': instance.novaDataDeRegistro,
       'criador': instance.criador,
     };

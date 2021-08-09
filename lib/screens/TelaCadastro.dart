@@ -26,14 +26,13 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.purple,
-                Colors.red[300],
-                Colors.yellow,
+                 Colors.blue[300],
+                    Colors.green[200],
               ],
             ),
           ),
         ),
-        title: Text("Me cadastrar", style: TextStyle(fontSize: 24),),
+        title: Text("Me cadastrar", style: TextStyle(fontSize: 24, color: Colors.white),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -43,9 +42,8 @@ padding: EdgeInsets.all(0),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.red[300],
-                  Colors.yellow,
+                   Colors.blue[300],
+                    Colors.green[200],
                 ],
               )),        
               child: Padding(
@@ -60,7 +58,7 @@ padding: EdgeInsets.all(0),
                     spacing: 16,
                     runSpacing: 16,
                     children: [
-                      Text("Faça já o seu cadastro"),
+                      Text("Faça já o seu cadastro", style: TextStyle(fontSize: 16, color: Colors.blue)),
                       Divider(),
                       TextFieldPadrao(
                         titulo: "E-mail",
@@ -111,7 +109,7 @@ padding: EdgeInsets.all(0),
                       ),
                       Row(children: [
                         Expanded(child: Divider()),
-                        Text("Ou"),
+                        Text("Ou", style: TextStyle(fontSize: 16, color: Colors.blue)),
                         Expanded(child: Divider())
                       ]),
                       BotaoPadrao(

@@ -22,14 +22,13 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.red[300],
-                  Colors.yellow,
+                   Colors.blue[300],
+                    Colors.green[200],
                 ],
               ),
             ),
           ),
-        title: Text("Editar meu usuário", style: TextStyle(fontSize: 24),),
+        title: Text("Editar meu usuário", style: TextStyle(fontSize: 24, color: Colors.white), ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -39,9 +38,8 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.red[300],
-                  Colors.yellow,
+                   Colors.blue[300],
+                    Colors.green[200],
                 ],
               )),
         child: Padding(
@@ -56,7 +54,7 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
                     spacing: 16,
                     runSpacing: 16,
                     children: [
-                      Text("Insira os novos dados"),
+                      Text("Insira os novos dados", style: TextStyle(fontSize: 16, color: Colors.blue)),
                       Divider(),
                       TextFieldPadrao(
                         titulo: "Nome",

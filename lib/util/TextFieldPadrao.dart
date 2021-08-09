@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TextFieldPadrao extends StatelessWidget {
+class TextFieldPadrao extends StatefulWidget {
   final Function(String text) onChanged;
   final TextInputType inputType;
   final String titulo, value;
@@ -19,13 +19,24 @@ class TextFieldPadrao extends StatelessWidget {
       : super(key: key);
 
   @override
+  _TextFieldPadraoState createState() => _TextFieldPadraoState();
+}
+
+class _TextFieldPadraoState extends State<TextFieldPadrao> {
+  TextEditingController controller;
+  @override
+  void initState() {
+controller = TextEditingController(text: widget.value ?? "");
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Visibility(
-            visible: titulo?.isNotEmpty ?? false,
+            visible: widget.titulo?.isNotEmpty ?? false,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 8),
             
@@ -34,13 +45,13 @@ class TextFieldPadrao extends StatelessWidget {
           height: 45,
           child: TextField(
             
-            keyboardType: inputType,
-            inputFormatters: inputFormatters,
-            onChanged: onChanged,
-            obscureText: obscureText,
-            controller: TextEditingController(text: value ?? ""),
+            keyboardType: widget.inputType,
+            inputFormatters: widget.inputFormatters,
+            onChanged: widget.onChanged,
+            obscureText: widget.obscureText,
+            controller: controller,
             decoration: InputDecoration(
-              labelText: "$titulo",
+              labelText: "${widget.titulo}",
                 border: OutlineInputBorder(
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(5.0),

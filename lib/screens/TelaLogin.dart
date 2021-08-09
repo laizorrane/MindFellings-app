@@ -25,14 +25,13 @@ class _TelaLoginState extends State<TelaLogin> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.red[300],
-                  Colors.yellow,
+                   Colors.blue[300],
+                    Colors.green[200],
                 ],
               ),
             ),
           ),
-          title: Text("Mind Fellings", style: TextStyle(fontSize: 24),),
+          title: Text("Mind Fellings", style: TextStyle(fontSize: 24, color: Colors.white),),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -42,9 +41,8 @@ class _TelaLoginState extends State<TelaLogin> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.red[300],
-                  Colors.yellow,
+ Colors.blue[300],
+                    Colors.green[200],
                 ],
               )),
           child: Padding(
@@ -59,7 +57,7 @@ class _TelaLoginState extends State<TelaLogin> {
                     spacing: 16,
                     runSpacing: 16,
                     children: [
-                      Text("Faça seu login:"),
+                      Text("Faça seu login:", style: TextStyle(fontSize: 16, color: Colors.blue)),
                       Divider(),
                       TextFieldPadrao(
                         titulo: "E-mail",
@@ -90,7 +88,7 @@ class _TelaLoginState extends State<TelaLogin> {
                       ),
                       Row(children: [
                         Expanded(child: Divider()),
-                        Text("Ou"),
+                        Text("Ou", style: TextStyle(fontSize: 16, color: Colors.blue)),
                         Expanded(child: Divider())
                       ]),
                       BotaoPadrao(

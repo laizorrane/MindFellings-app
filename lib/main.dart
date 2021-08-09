@@ -18,6 +18,7 @@ void main() {
   getIt.registerSingleton(ServicosDoMindFelling(Dio()));
   getIt.registerLazySingleton(() => ControladorUsuario());
   getIt.registerSingleton(ControladorRegistro());
+  
   runApp(MyApp());
 }
 
@@ -25,10 +26,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      
       debugShowCheckedModeBanner: false,
       title: 'Mind Fellings APP',
       theme: ThemeData(
-        primaryColor: Colors.purple,
+        primaryColor: Colors.blue[300],
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: "/splash",
