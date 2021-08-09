@@ -126,6 +126,7 @@ class _TelaRegistrosState extends State<TelaRegistros>
                                   padding:
                                       const EdgeInsets.only(left: 16, right: 16),
                                   child: ListView.builder(
+                                    
                                     reverse: true,
                                     primary: false,
                                     itemBuilder: (context, index) {

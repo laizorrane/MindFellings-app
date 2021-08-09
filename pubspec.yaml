@@ -40,6 +40,7 @@ dependencies:
   logger: any
   animated_background: any
   animated_text_kit: any
+
   
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
